@@ -160,7 +160,7 @@
         <div class="container-fluid page-header-inner py-5">
           <div class="container text-center pb-5">
             <h1 class="display-3 text-white mb-3 animated slideInDown">
-              The Bar
+              Our Services
             </h1>
           </div>
         </div>
@@ -191,7 +191,7 @@
             </div>
             <div class="modal-body">
               <table class="show-cart table"></table>
-              <div>Total price: $<span class="total-cart"></span></div>
+              <div>Total price: PHP <span class="total-cart"></span></div>
             </div>
             <div class="modal-footer">
               
@@ -240,7 +240,7 @@
                       <!-- Add more rows for additional products -->
                     </tbody>
                   </table>
-                  <div>Total Amount: $<span id="checkoutTotalAmount"></span></div>
+                  <div>Total Amount: PHP<span id="checkoutTotalAmount"></span></div>
                 </div>
       
                 <!-- Payment Method -->
@@ -278,6 +278,50 @@
       </form>
       <!--END OF CHECKOUT PAYMENT-->
 
+      <!--START OF RECEIPT MODAL-->
+<form id="receiptForm">
+  <div class="modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="receiptModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="receiptModalLabel">Receipt</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h6>Order Receipt</h6>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="receiptCartItems">
+              <!-- Receipt items will be populated here -->
+            </tbody>
+          </table>
+          <div>Total Amount: PHP <span id="receiptTotalAmount"></span></div>
+          <div>Payment Method: <span id="receiptPaymentMethod"></span></div>
+          <div>Delivery Option: <span id="receiptDeliveryOption"></span></div>
+          
+          <!-- Hidden inputs to store receipt details -->
+          <input type="hidden" name="receiptTotalAmountInput" id="receiptTotalAmountInput">
+          <input type="hidden" name="receiptPaymentMethodInput" id="receiptPaymentMethodInput">
+          <input type="hidden" name="receiptDeliveryOptionInput" id="receiptDeliveryOptionInput">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!--END OF RECEIPT MODAL-->
+
 
       <!--START OF PRODUCTS-->
       <div class="container-xxl py-5">
@@ -297,17 +341,19 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Mobile Cafe</button>
               </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false">Rooms</button>
-            </li>
+            
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="tab5-tab" data-bs-toggle="tab" data-bs-target="#tab5" type="button" role="tab" aria-controls="tab5" aria-selected="false">Events & Catering Services</button>
               </li>
+
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false">Rooms</button>
+            </li>
             <!-- Add more tabs as needed -->
           </ul>
       
 
-
+          
           <!--GRAZING TABLE-->
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
@@ -321,12 +367,12 @@
                         <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
                         <small
                           class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                          >PHP 0</small
+                          >PHP 1999</small
                         >
                       </div>
                       <div class="p-4 mt-2">
                         <div class="d-flex justify-content-between mb-3">
-                          <h5 class="mb-0">Product1</h5>
+                          <h8 class="mb-0"><b>Charcuterie Delight Platter</b></h8>
                           <div class="ps-2">
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
@@ -345,16 +391,12 @@
                             drinks available</small
                           >
                         </div>
-                        <p class="text-body mb-3">
-                          Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                          lorem sed diam stet diam sed stet lorem.
-                        </p>
                         <div class="d-flex justify-content-between">
                           <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                             >View Detail</a
                           >
                           <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-        data-name="Product1" data-price="10">Add to Cart</a>
+                         data-name="Charcuterie Delight Platter" data-price="1999">Add to Cart</a>
       
                         </div>
                       </div>
@@ -366,12 +408,12 @@
                         <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
                         <small
                           class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                          >PHP 0</small
+                          >PHP 899</small
                         >
                       </div>
                       <div class="p-4 mt-2">
                         <div class="d-flex justify-content-between mb-3">
-                          <h5 class="mb-0">Product2</h5>
+                          <h8 class="mb-0"><b>Mango Graham Parfait</b></h8>
                           <div class="ps-2">
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
@@ -390,16 +432,12 @@
                             drinks available</small
                           >
                         </div>
-                        <p class="text-body mb-3">
-                          Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                          lorem sed diam stet diam sed stet lorem.
-                        </p>
                         <div class="d-flex justify-content-between">
                           <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                             >View Detail</a
                           >
                           <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-        data-name="Product2" data-price="10">Add to Cart</a>
+                          data-name="Mango Graham Parfait" data-price="899">Add to Cart</a>
                         </div>
                       </div>
                     </div>
@@ -410,12 +448,12 @@
                         <img class="img-fluid" src="productsimg/PICTURESSS/grazing3.jpg" alt="" />
                         <small
                           class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                          >PHP 0</small
+                          >PHP 999</small
                         >
                       </div>
                       <div class="p-4 mt-2">
                         <div class="d-flex justify-content-between mb-3">
-                          <h5 class="mb-0">Product3</h5>
+                          <h8 class="mb-0"><b>Fresh Fruit Extravaganza</b></h8>
                           <div class="ps-2">
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
@@ -434,16 +472,12 @@
                             drinks available</small
                           >
                         </div>
-                        <p class="text-body mb-3">
-                          Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                          lorem sed diam stet diam sed stet lorem.
-                        </p>
                         <div class="d-flex justify-content-between">
                           <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                             >View Detail</a
                           >
                           <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-        data-name="Product3" data-price="10">Add to Cart</a>
+                          data-name="Fresh Fruit Extravaganza" data-price="999">Add to Cart</a>
                         </div>
                       </div>
                     </div>
@@ -454,12 +488,12 @@
                         <img class="img-fluid" src="productsimg/PICTURESSS/grazing4.jpg" alt="" />
                         <small
                           class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                          >PHP 0</small
+                          >PHP 1299</small
                         >
                       </div>
                       <div class="p-4 mt-2">
                         <div class="d-flex justify-content-between mb-3">
-                          <h5 class="mb-0">Product4</h5>
+                          <h8 class="mb-0"><b>Gourmet Burger Sliders</b></h8>
                           <div class="ps-2">
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
@@ -478,16 +512,12 @@
                             drinks available</small
                           >
                         </div>
-                        <p class="text-body mb-3">
-                          Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                          lorem sed diam stet diam sed stet lorem.
-                        </p>
                         <div class="d-flex justify-content-between">
                           <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                             >View Detail</a
                           >
                           <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-        data-name="Product4" data-price="10">Add to Cart</a>
+                          data-name="Gourmet Burger Sliders" data-price="1299">Add to Cart</a>
                         </div>
                       </div>
                     </div>
@@ -498,12 +528,12 @@
                         <img class="img-fluid" src="productsimg/PICTURESSS/grazing16.jpg" alt="" />
                         <small
                           class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                          >PHP 0</small
+                          >PHP 899</small
                         >
                       </div>
                       <div class="p-4 mt-2">
                         <div class="d-flex justify-content-between mb-3">
-                          <h5 class="mb-0">Procut5</h5>
+                          <h8 class="mb-0"><b>Assorted Donut Delight</b></h8>
                           <div class="ps-2">
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
@@ -522,16 +552,12 @@
                             drinks available</small
                           >
                         </div>
-                        <p class="text-body mb-3">
-                          Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                          lorem sed diam stet diam sed stet lorem.
-                        </p>
                         <div class="d-flex justify-content-between">
                           <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                             >View Detail</a
                           >
                           <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-        data-name="Product5" data-price="10">Add to Cart</a>
+                          data-name="Assorted Donut Delight" data-price="899">Add to Cart</a>
                         </div>
                       </div>
                     </div>
@@ -542,12 +568,12 @@
                         <img class="img-fluid" src="productsimg/PICTURESSS/grazing20.jpg" alt="" />
                         <small
                           class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                          >PHP 0</small
+                          >PHP 799</small
                         >
                       </div>
                       <div class="p-4 mt-2">
                         <div class="d-flex justify-content-between mb-3">
-                          <h5 class="mb-0">Product6</h5>
+                          <h8 class="mb-0"><b>Biscuit and Bread Basket</b></h8>
                           <div class="ps-2">
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
@@ -566,16 +592,12 @@
                             drinks available</small
                           >
                         </div>
-                        <p class="text-body mb-3">
-                          Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                          lorem sed diam stet diam sed stet lorem.
-                        </p>
                         <div class="d-flex justify-content-between">
                           <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                             >View Detail</a
                           >
                           <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-        data-name="Product6" data-price="10">Add to Cart</a>
+                          data-name="Biscuit and Bread Basket" data-price="799">Add to Cart</a>
                         </div>
                       </div>
                     </div>
@@ -587,12 +609,12 @@
                           <img class="img-fluid" src="productsimg/PICTURESSS/grazing5.jpg" alt="" />
                           <small
                             class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                            >PHP 0</small
+                            >PHP 1199</small
                           >
                         </div>
                         <div class="p-4 mt-2">
                           <div class="d-flex justify-content-between mb-3">
-                            <h5 class="mb-0">Product1</h5>
+                            <h8 class="mb-0"><b>Sweet Indulgence Platter</b></h8>
                             <div class="ps-2">
                               <small class="fa fa-star text-primary"></small>
                               <small class="fa fa-star text-primary"></small>
@@ -611,16 +633,12 @@
                               drinks available</small
                             >
                           </div>
-                          <p class="text-body mb-3">
-                            Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                            lorem sed diam stet diam sed stet lorem.
-                          </p>
                           <div class="d-flex justify-content-between">
                             <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                               >View Detail</a
                             >
                             <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-        data-name="Product7" data-price="10">Add to Cart</a>
+                            data-name="Sweet Indulgence Platter" data-price="1299">Add to Cart</a>
                           </div>
                         </div>
                       </div>
@@ -631,12 +649,12 @@
                           <img class="img-fluid" src="productsimg/PICTURESSS/grazing6.jpg" alt="" />
                           <small
                             class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                            >PHP 0</small
+                            >PHP 1399</small
                           >
                         </div>
                         <div class="p-4 mt-2">
                           <div class="d-flex justify-content-between mb-3">
-                            <h5 class="mb-0">Product2</h5>
+                            <h8 class="mb-0"><b>Charcuterie Extravaganza</b></h8>
                             <div class="ps-2">
                               <small class="fa fa-star text-primary"></small>
                               <small class="fa fa-star text-primary"></small>
@@ -655,16 +673,12 @@
                               drinks available</small
                             >
                           </div>
-                          <p class="text-body mb-3">
-                            Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                            lorem sed diam stet diam sed stet lorem.
-                          </p>
                           <div class="d-flex justify-content-between">
                             <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                               >View Detail</a
                             >
                             <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-        data-name="Product8" data-price="10">Add to Cart</a>
+                            data-name="Charcuterie Extravaganza" data-price="1399">Add to Cart</a>
                           </div>
                         </div>
                       </div>
@@ -675,12 +689,12 @@
                           <img class="img-fluid" src="productsimg/PICTURESSS/grazing19.jpg" alt="" />
                           <small
                             class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                            >PHP 0</small
+                            >PHP 1599</small
                           >
                         </div>
                         <div class="p-4 mt-2">
                           <div class="d-flex justify-content-between mb-3">
-                            <h5 class="mb-0">Product3</h5>
+                            <h8 class="mb-0"><b>Savory Meat Medley</b></h8>
                             <div class="ps-2">
                               <small class="fa fa-star text-primary"></small>
                               <small class="fa fa-star text-primary"></small>
@@ -699,16 +713,12 @@
                               drinks available</small
                             >
                           </div>
-                          <p class="text-body mb-3">
-                            Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                            lorem sed diam stet diam sed stet lorem.
-                          </p>
                           <div class="d-flex justify-content-between">
                             <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                               >View Detail</a
                             >
                             <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-        data-name="Product9" data-price="10">Add to Cart</a>
+                            data-name="Product9" data-price="10">Add to Cart</a>
                           </div>
                         </div>
                       </div>
@@ -717,7 +727,7 @@
               </div>
               </div>
             </div>
-
+            <!--END OF TAB 1-->
 
 
             <!--MOBILE BAR-->
@@ -726,409 +736,259 @@
               <div class="row g-4">
                 <div class="row g-4">
                   <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                   <div class="room-item shadow rounded overflow-hidden">
-                     <div class="position-relative">
-                       <img class="img-fluid" src="productsimg/PICTURESSS/drink7.jpg" alt="" />
-                          <small
-                           class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-                            >PHP 0</small
-                           >
-                       </div>
-                       <div class="p-4 mt-2">
-                         <div class="d-flex justify-content-between mb-3">
-                           <h5 class="mb-0">Product1</h5>
-                           <div class="ps-2">
+                    <div class="room-item shadow rounded overflow-hidden">
+                      <div class="position-relative">
+                        <img class="img-fluid" src="productsimg/PICTURESSS/drink7.jpg" alt="" />
+                        <small
+                          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                          >PHP 129</small
+                        >
+                      </div>
+                      <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
+                          <h8 class="mb-0"><b>Charcuterie Delight Platter</b></h8>
+                          <div class="ps-2">
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
-                         </div>
+                          </div>
                         </div>
-                       <div class="d-flex mb-3">
-                         <small class="border-end me-3 pe-3"
-                          ><i class="fa fa-utensils text-primary me-2"></i>x Pax</small
-                           >
-                         <small
+                        <div class="d-flex mb-3">
+                          <small class="border-end me-3 pe-3"
+                            ><i class="fa fa-utensils text-primary me-2"></i>x
+                            Pax</small
+                          >
+                          <small
                             ><i class="fa fa-glass-cheers text-primary me-2"></i>No
                             drinks available</small
                           >
-                       </div>
-                     <p class="text-body mb-3">
-                         Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                         lorem sed diam stet diam sed stet lorem.
-                     </p>
-      <div class="d-flex justify-content-between">
-        <a class="btn btn-sm btn-primary rounded py-2 px-4 view-detail" href="#"
-          data-bs-toggle="modal" data-bs-target="#productModal" data-name="Product1"
-          data-description="Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem."
-          data-price="PHP 0" data-image="img/productsimg/PICTURESSS/grazing1.jpg"
-          >View Detail</a
-        >
-        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-          data-name="Product1" data-price="10">Add to Cart</a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Start -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-8">
-            <img id="modalImage" src="productsimg/PICTURESSS/drink7.jpg" class="img-fluid" alt="Product Image">
-          </div>
-          <div class="col-md-4">
-            <h5 id="modalName">FUISFSIUFSNFSFUNS</h5>
-            <p id="modalDescription">DJHIUSDUSHDDSDUI</p>
-            <h6 id="modalPrice">599</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal End -->
-<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-  <div class="room-item shadow rounded overflow-hidden">
-    <div class="position-relative">
-      <img class="img-fluid" src="productsimg/PICTURESSS/drink6.jpg" alt="" />
-         <small
-          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-           >PHP 0</small
-          >
-      </div>
-      <div class="p-4 mt-2">
-        <div class="d-flex justify-content-between mb-3">
-          <h5 class="mb-0">Product1</h5>
-          <div class="ps-2">
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-</div>
-</div>
-<div class="d-flex mb-3">
-<small class="border-end me-3 pe-3"
-><i class="fa fa-utensils text-primary me-2"></i>x Pax</small
->
-<small
-><i class="fa fa-glass-cheers text-primary me-2"></i>No
-drinks available</small
->
-</div>
-<p class="text-body mb-3">
-Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-lorem sed diam stet diam sed stet lorem.
-</p>
-<div class="d-flex justify-content-between">
-<a class="btn btn-sm btn-primary rounded py-2 px-4 view-detail" href="#"
-data-bs-toggle="modal" data-bs-target="#productModal" data-name="Product1"
-data-description="Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem."
-data-price="PHP 0" data-image="img/productsimg/PICTURESSS/drink6.jpg"
->View Detail</a
->
-<a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-data-name="Product1" data-price="10">Add to Cart</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal Start -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-<div class="modal-content">
-<div class="modal-body">
-<div class="row">
-<div class="col-md-8">
-<img id="modalImage" src="productsimg/PICTURESSS/drink6.jpg" class="img-fluid" alt="Product Image">
-</div>
-<div class="col-md-4">
-<h5 id="modalName">FUISFSIUFSNFSFUNS</h5>
-<p id="modalDescription">DJHIUSDUSHDDSDUI</p>
-<h6 id="modalPrice">599</h6>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal End -->
-<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-  <div class="room-item shadow rounded overflow-hidden">
-    <div class="position-relative">
-      <img class="img-fluid" src="productsimg/PICTURESSS/drink4.jpg" alt="" />
-         <small
-          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-           >PHP 0</small
-          >
-      </div>
-      <div class="p-4 mt-2">
-        <div class="d-flex justify-content-between mb-3">
-          <h5 class="mb-0">Product1</h5>
-          <div class="ps-2">
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-</div>
-</div>
-<div class="d-flex mb-3">
-<small class="border-end me-3 pe-3"
-><i class="fa fa-utensils text-primary me-2"></i>x Pax</small
->
-<small
-><i class="fa fa-glass-cheers text-primary me-2"></i>No
-drinks available</small
->
-</div>
-<p class="text-body mb-3">
-Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-lorem sed diam stet diam sed stet lorem.
-</p>
-<div class="d-flex justify-content-between">
-<a class="btn btn-sm btn-primary rounded py-2 px-4 view-detail" href="#"
-data-bs-toggle="modal" data-bs-target="#productModal" data-name="Product1"
-data-description="Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem."
-data-price="PHP 0" data-image="img/productsimg/PICTURESSS/grazing1.jpg"
->View Detail</a
->
-<a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-data-name="Product1" data-price="10">Add to Cart</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal Start -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-<div class="modal-content">
-<div class="modal-body">
-<div class="row">
-<div class="col-md-8">
-<img id="modalImage" src="productsimg/PICTURESSS/drink4.jpg" class="img-fluid" alt="Product Image">
-</div>
-<div class="col-md-4">
-<h5 id="modalName">FUISFSIUFSNFSFUNS</h5>
-<p id="modalDescription">DJHIUSDUSHDDSDUI</p>
-<h6 id="modalPrice">599</h6>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal End -->
-<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-  <div class="room-item shadow rounded overflow-hidden">
-    <div class="position-relative">
-      <img class="img-fluid" src="productsimg/PICTURESSS/drink7.jpg" alt="" />
-         <small
-          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-           >PHP 0</small
-          >
-      </div>
-      <div class="p-4 mt-2">
-        <div class="d-flex justify-content-between mb-3">
-          <h5 class="mb-0">Product1</h5>
-          <div class="ps-2">
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-</div>
-</div>
-<div class="d-flex mb-3">
-<small class="border-end me-3 pe-3"
-><i class="fa fa-utensils text-primary me-2"></i>x Pax</small
->
-<small
-><i class="fa fa-glass-cheers text-primary me-2"></i>No
-drinks available</small
->
-</div>
-<p class="text-body mb-3">
-Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-lorem sed diam stet diam sed stet lorem.
-</p>
-<div class="d-flex justify-content-between">
-<a class="btn btn-sm btn-primary rounded py-2 px-4 view-detail" href="#"
-data-bs-toggle="modal" data-bs-target="#productModal" data-name="Product1"
-data-description="Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem."
-data-price="PHP 0" data-image="img/productsimg/PICTURESSS/grazing1.jpg"
->View Detail</a
->
-<a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-data-name="Product1" data-price="10">Add to Cart</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal Start -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-<div class="modal-content">
-<div class="modal-body">
-<div class="row">
-<div class="col-md-8">
-<img id="modalImage" src="productsimg/PICTURESSS/drink7.jpg" class="img-fluid" alt="Product Image">
-</div>
-<div class="col-md-4">
-<h5 id="modalName">FUISFSIUFSNFSFUNS</h5>
-<p id="modalDescription">DJHIUSDUSHDDSDUI</p>
-<h6 id="modalPrice">599</h6>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal End -->
-<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-  <div class="room-item shadow rounded overflow-hidden">
-    <div class="position-relative">
-      <img class="img-fluid" src="productsimg/PICTURESSS/drink7.jpg" alt="" />
-         <small
-          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-           >PHP 0</small
-          >
-      </div>
-      <div class="p-4 mt-2">
-        <div class="d-flex justify-content-between mb-3">
-          <h5 class="mb-0">Product1</h5>
-          <div class="ps-2">
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-</div>
-</div>
-<div class="d-flex mb-3">
-<small class="border-end me-3 pe-3"
-><i class="fa fa-utensils text-primary me-2"></i>x Pax</small
->
-<small
-><i class="fa fa-glass-cheers text-primary me-2"></i>No
-drinks available</small
->
-</div>
-<p class="text-body mb-3">
-Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-lorem sed diam stet diam sed stet lorem.
-</p>
-<div class="d-flex justify-content-between">
-<a class="btn btn-sm btn-primary rounded py-2 px-4 view-detail" href="#"
-data-bs-toggle="modal" data-bs-target="#productModal" data-name="Product1"
-data-description="Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem."
-data-price="PHP 0" data-image="img/productsimg/PICTURESSS/grazing1.jpg"
->View Detail</a
->
-<a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-data-name="Product1" data-price="10">Add to Cart</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal Start -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-<div class="modal-content">
-<div class="modal-body">
-<div class="row">
-<div class="col-md-8">
-<img id="modalImage" src="productsimg/PICTURESSS/drink7.jpg" class="img-fluid" alt="Product Image">
-</div>
-<div class="col-md-4">
-<h5 id="modalName">FUISFSIUFSNFSFUNS</h5>
-<p id="modalDescription">DJHIUSDUSHDDSDUI</p>
-<h6 id="modalPrice">599</h6>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal End -->
-<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-  <div class="room-item shadow rounded overflow-hidden">
-    <div class="position-relative">
-      <img class="img-fluid" src="productsimg/PICTURESSS/drink7.jpg" alt="" />
-         <small
-          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
-           >PHP 0</small
-          >
-      </div>
-      <div class="p-4 mt-2">
-        <div class="d-flex justify-content-between mb-3">
-          <h5 class="mb-0">Product1</h5>
-          <div class="ps-2">
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-<small class="fa fa-star text-primary"></small>
-</div>
-</div>
-<div class="d-flex mb-3">
-<small class="border-end me-3 pe-3"
-><i class="fa fa-utensils text-primary me-2"></i>x Pax</small
->
-<small
-><i class="fa fa-glass-cheers text-primary me-2"></i>No
-drinks available</small
->
-</div>
-<p class="text-body mb-3">
-Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-lorem sed diam stet diam sed stet lorem.
-</p>
-<div class="d-flex justify-content-between">
-<a class="btn btn-sm btn-primary rounded py-2 px-4 view-detail" href="#"
-data-bs-toggle="modal" data-bs-target="#productModal" data-name="Product1"
-data-description="Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem."
-data-price="PHP 0" data-image="img/productsimg/PICTURESSS/grazing1.jpg"
->View Detail</a
->
-<a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-data-name="Product1" data-price="10">Add to Cart</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal Start -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-<div class="modal-content">
-<div class="modal-body">
-<div class="row">
-<div class="col-md-8">
-<img id="modalImage" src="productsimg/PICTURESSS/drink7.jpg" class="img-fluid" alt="Product Image">
-</div>
-<div class="col-md-4">
-<h5 id="modalName">FUISFSIUFSNFSFUNS</h5>
-<p id="modalDescription">DJHIUSDUSHDDSDUI</p>
-<h6 id="modalPrice">599</h6>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal End -->
-
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                            >View Detail</a
+                          >
+                          <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                         data-name="Charcuterie Delight Platter" data-price="129">Add to Cart</a>
+      
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                      <div class="position-relative">
+                        <img class="img-fluid" src="productsimg/PICTURESSS/drink1.jpg" alt="" />
+                        <small
+                          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                          >PHP 499</small
+                        >
+                      </div>
+                      <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
+                          <h8 class="mb-0"><b>Charcuterie Delight Platter</b></h8>
+                          <div class="ps-2">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                          </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                          <small class="border-end me-3 pe-3"
+                            ><i class="fa fa-utensils text-primary me-2"></i>x
+                            Pax</small
+                          >
+                          <small
+                            ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                            drinks available</small
+                          >
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                            >View Detail</a
+                          >
+                          <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                         data-name="Charcuterie Delight Platter" data-price="499">Add to Cart</a>
+      
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                      <div class="position-relative">
+                        <img class="img-fluid" src="productsimg/PICTURESSS/drink6.jpg" alt="" />
+                        <small
+                          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                          >PHP 499</small
+                        >
+                      </div>
+                      <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
+                          <h8 class="mb-0"><b>Charcuterie Delight Platter</b></h8>
+                          <div class="ps-2">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                          </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                          <small class="border-end me-3 pe-3"
+                            ><i class="fa fa-utensils text-primary me-2"></i>x
+                            Pax</small
+                          >
+                          <small
+                            ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                            drinks available</small
+                          >
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                            >View Detail</a
+                          >
+                          <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                         data-name="Charcuterie Delight Platter" data-price="499">Add to Cart</a>
+      
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                      <div class="position-relative">
+                        <img class="img-fluid" src="productsimg/PICTURESSS/DRINK10.jpg" alt="" />
+                        <small
+                          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                          >PHP 499</small
+                        >
+                      </div>
+                      <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
+                          <h8 class="mb-0"><b>Charcuterie Delight Platter</b></h8>
+                          <div class="ps-2">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                          </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                          <small class="border-end me-3 pe-3"
+                            ><i class="fa fa-utensils text-primary me-2"></i>x
+                            Pax</small
+                          >
+                          <small
+                            ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                            drinks available</small
+                          >
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                            >View Detail</a
+                          >
+                          <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                         data-name="Charcuterie Delight Platter" data-price="499">Add to Cart</a>
+      
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                      <div class="position-relative">
+                        <img class="img-fluid" src="productsimg/PICTURESSS/drink11.jpg" alt="" />
+                        <small
+                          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                          >PHP 499</small
+                        >
+                      </div>
+                      <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
+                          <h8 class="mb-0"><b>Charcuterie Delight Platter</b></h8>
+                          <div class="ps-2">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                          </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                          <small class="border-end me-3 pe-3"
+                            ><i class="fa fa-utensils text-primary me-2"></i>x
+                            Pax</small
+                          >
+                          <small
+                            ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                            drinks available</small
+                          >
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                            >View Detail</a
+                          >
+                          <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                         data-name="Charcuterie Delight Platter" data-price="499">Add to Cart</a>
+      
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                      <div class="position-relative">
+                        <img class="img-fluid" src="productsimg/PICTURESSS/drink4.jpg" alt="" />
+                        <small
+                          class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                          >PHP 499</small
+                        >
+                      </div>
+                      <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
+                          <h8 class="mb-0"><b>Charcuterie Delight Platter</b></h8>
+                          <div class="ps-2">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                          </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                          <small class="border-end me-3 pe-3"
+                            ><i class="fa fa-utensils text-primary me-2"></i>x
+                            Pax</small
+                          >
+                          <small
+                            ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                            drinks available</small
+                          >
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                            >View Detail</a
+                          >
+                          <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                         data-name="Charcuterie Delight Platter" data-price="499">Add to Cart</a>
+      
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </div>       
             </div>
         </div> <!--end of tab2-->
 
 
          <!--MOBILE CAFE-->
-         <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+        <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
             
             <div class="row g-4">
               <div class="row g-4">
@@ -1171,7 +1031,7 @@ data-name="Product1" data-price="10">Add to Cart</a>
                           >View Detail</a
                         >
                         <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-      data-name="cafe1" data-price="10">Add to Cart</a>
+                        data-name="cafe1" data-price="10">Add to Cart</a>
     
                       </div>
                     </div>
@@ -1216,7 +1076,96 @@ data-name="Product1" data-price="10">Add to Cart</a>
                           >View Detail</a
                         >
                         <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-      data-name="cafe2" data-price="10">Add to Cart</a>
+                        data-name="cafe2" data-price="10">Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
                       </div>
                     </div>
                   </div>
@@ -1260,7 +1209,7 @@ data-name="Product1" data-price="10">Add to Cart</a>
                           >View Detail</a
                         >
                         <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-      data-name="cafe3" data-price="10">Add to Cart</a>
+                        data-name="cafe3" data-price="10">Add to Cart</a>
                       </div>
                     </div>
                   </div>
@@ -1304,14 +1253,14 @@ data-name="Product1" data-price="10">Add to Cart</a>
                           >View Detail</a
                         >
                         <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-      data-name="cafe4" data-price="10">Add to Cart</a>
+                     data-name="cafe4" data-price="10">Add to Cart</a>
                       </div>
                     </div>
                   </div>
                 </div>
             </div>       
           </div>
-          </div> <!--div close for cafe-->
+       </div> <!--div close for cafe-->
 
          <!--ROOMS-->
          <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4 -tab">
@@ -1356,8 +1305,237 @@ data-name="Product1" data-price="10">Add to Cart</a>
                         <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
                           >View Detail</a
                         >
+                        <a href="booking.html" class="btn btn-sm btn-dark rounded py-2 px-4 btn-effect"
+      data-name="room1" data-price="10">Book Now</a>
+
+                        <!--TO PRINCESS
+                        CHANGE MO ADD TO CART >> BOOK NOW
+                        tapos remove mo yubng add-to-cart dito sa class
+                        tapos ilagay mo sa href booking.html
+                        gawin mo yan sa lahat ng rooms
+                        -->
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
                         <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
-      data-name="room1" data-price="10">Add to Cart</a>
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div><div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
     
                       </div>
                     </div>
@@ -1547,6 +1725,629 @@ data-name="Product1" data-price="10">Add to Cart</a>
                         <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
       data-name="event1" data-price="10">Add to Cart</a>
     
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing1.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe1</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe1" data-price="10">Add to Cart</a>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                      <img class="img-fluid" src="productsimg/PICTURESSS/grazing2.jpg" alt="" />
+                      <small
+                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"
+                        >PHP 0</small
+                      >
+                    </div>
+                    <div class="p-4 mt-2">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">cafe2</h5>
+                        <div class="ps-2">
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                          <small class="fa fa-star text-primary"></small>
+                        </div>
+                      </div>
+                      <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"
+                          ><i class="fa fa-utensils text-primary me-2"></i>x
+                          Pax</small
+                        >
+                        <small
+                          ><i class="fa fa-glass-cheers text-primary me-2"></i>No
+                          drinks available</small
+                        >
+                      </div>
+                      <p class="text-body mb-3">
+                        Erat ipsum justo amet duo et elitr dolor, est duo duo eos
+                        lorem sed diam stet diam sed stet lorem.
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href=""
+                          >View Detail</a
+                        >
+                        <a href="#" class="btn btn-sm btn-dark rounded py-2 px-4 add-to-cart btn-effect"
+                        data-name="cafe2" data-price="10">Add to Cart</a>
                       </div>
                     </div>
                   </div>

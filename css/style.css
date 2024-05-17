@@ -643,7 +643,7 @@
 }
 
 /*VIEW DETAIL CSS*/
-/* Custom styles for the modal */
+/* Custom styles for the modal 
 .modal-dialog {
   max-width: 80%;
 }
@@ -653,20 +653,21 @@
   height: 50%;
 }
 
-/* Ensures the image is larger than the container of the descriptions */
+/* Ensures the image is larger than the container of the descriptions 
 #modalImage {
-  width: 90%; /* Take full width of the container */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 80vh; /* Adjust max height to your preference */
-  object-fit: cover; /* Ensures image covers the area without stretching */
+  width: 90%; /* Take full width of the container 
+  height: auto; /* Maintain aspect ratio 
+  max-height: 80vh; /* Adjust max height to your preference 
+  object-fit: cover; /* Ensures image covers the area without stretching 
 }
 
-/* Adjusting the width of columns */
+/* Adjusting the width of columns 
 .modal-body .col-md-8 {
-  flex: 0 0 70%; /* Making the image column larger */
+  flex: 0 0 70%; /* Making the image column larger 
   max-width: 70%;
 }
 .modal-body .col-md-4 {
-  flex: 0 0 30%; /* Making the description column smaller */
+  flex: 0 0 30%; /* Making the description column smaller 
   max-width: 30%;
 }
+*/
