@@ -310,65 +310,6 @@ $(".show-cart").on("change", ".item-count", function (event) {
 
 displayCart();
 
-/***********CHECKOUT************
-// Function to update the checkout modal with cart items and total amount
-function updateCheckoutModal() {
-  var cartArray = shoppingCart.listCart();
-  var checkoutCartItems = document.getElementById("checkoutCartItems");
-  var checkoutTotalAmount = document.getElementById("checkoutTotalAmount");
-  var cartTotal = shoppingCart.totalCart();
-
-  // Clear previous items in the checkout modal
-  checkoutCartItems.innerHTML = "";
-
-  // Populate cart items in the checkout modal
-  cartArray.forEach(function (item) {
-    var itemRow = document.createElement("tr");
-    itemRow.innerHTML = `
-      <td>${item.name}</td>
-      <td>$${item.price}</td>
-      <td>${item.count}</td>
-      <td>$${(item.price * item.count).toFixed(2)}</td>
-    `;
-    checkoutCartItems.appendChild(itemRow);
-  });
-
-  // Update total amount in the checkout modal
-  checkoutTotalAmount.textContent = cartTotal.toFixed(2);
-}
-
-// Display the checkout modal when "Order now" button is clicked
-$("#orderNowBtn").click(function () {
-  // Close the cart modal if it's open
-  $("#cartModal").modal("hide");
-  updateCheckoutModal(); // Update the checkout modal content
-  $("#checkoutModal").modal("show"); // Show the checkout modal
-});
-
-// Handle form submission
-$("#checkoutForm").submit(function (event) {
-  event.preventDefault(); // Prevent default form submission
-
-  // Get selected payment method and delivery option
-  var paymentMethod = $("input[name='paymentMethod']:checked").val();
-  var deliveryOption =$("#deliveryOption").val();
-
-  // You can further process the checkout information here, such as sending it to a server
-
-  // Clear the cart after successful order
-  shoppingCart.clearCart();
-  displayCart(); // Update the cart display
-
-  // Close the checkout modal after submitting the form
-  $("#checkoutModal").modal("hide");
-});
-
-// Close modal when clicking the "x" button
-$("#checkoutModal .close").click(function () {
-  $("#checkoutModal").modal("hide");
-});
-/****END OF CHECKOUT*****/
-
 /***********CHECKOUT************/
 // Function to update the checkout modal with cart items and total amount
 function updateCheckoutModal() {
@@ -399,9 +340,16 @@ function updateCheckoutModal() {
 // Display the checkout modal when "Order now" button is clicked
 $("#orderNowBtn").click(function () {
   // Close the cart modal if it's open
-  $("#cartModal").modal("hide");
+  //$("#cart").modal("hide");
+  //$("#cart").css("opacity", "0");
+  $("#cart").addClass("hide-cart");
   updateCheckoutModal(); // Update the checkout modal content
   $("#checkoutModal").modal("show"); // Show the checkout modal
+
+  // Remove the "hide-cart" class when any modal is hidden
+  $(".modal").on("hidden.bs.modal", function () {
+    $("#cart").removeClass("hide-cart");
+  });
 });
 
 // Function to update the receipt modal with order details
@@ -482,4 +430,66 @@ $("#receiptModal .close").click(function () {
 
 /****END OF CHECKOUT*****/
 
-/****SESSION JS ****/
+document
+  .getElementById("receiptOkButton")
+  .addEventListener("click", function () {
+    // Hide the receipt modal
+    $("#receiptModal").modal("hide");
+    // Show the thank you modal
+    $("#thankYouModal").modal("show");
+
+    $("#cart").css("opacity", "0");
+  });
+
+// Close the thank you modal when clicking the "x" button
+$("#thankYouModal .close").click(function () {
+  $("#thankYouModal").modal("hide");
+  $("#cart").modal("hide");
+});
+
+// Attach click event listener to the button with ID "cart"
+$("#cartIcon").click(function () {
+  // Revert the opacity of #cart back to normal
+  $("#cart").css("opacity", "");
+});
+
+/****MY ACCOUNT START ****/
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("accountForm");
+  const inputs = form.querySelectorAll("input");
+  const editButton = document.getElementById("editButton");
+  const saveButton = document.getElementById("saveButton");
+  const cancelButton = document.getElementById("cancelButton");
+
+  let originalValues = {};
+
+  editButton.addEventListener("click", function () {
+    inputs.forEach((input) => {
+      originalValues[input.name] = input.value;
+      input.removeAttribute("readonly");
+    });
+    editButton.style.display = "none";
+    saveButton.style.display = "inline-block";
+    cancelButton.style.display = "inline-block";
+  });
+
+  cancelButton.addEventListener("click", function () {
+    inputs.forEach((input) => {
+      input.value = originalValues[input.name];
+      input.setAttribute("readonly", "readonly");
+    });
+    editButton.style.display = "inline-block";
+    saveButton.style.display = "none";
+    cancelButton.style.display = "none";
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    inputs.forEach((input) => {
+      input.setAttribute("readonly", "readonly");
+    });
+    editButton.style.display = "inline-block";
+    saveButton.style.display = "none";
+    cancelButton.style.display = "none";
+  });
+});

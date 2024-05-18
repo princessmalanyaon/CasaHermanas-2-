@@ -118,270 +118,111 @@
                 </div>
                 <a></a>
               </div>
+
+              <!--SESSION START-->
+              <div class="dropdown">
+                <button
+                  class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style="color: white"
+                >
+                  Username <i class="fas fa-user ms-3"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">My Account</a>
+                  <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+              </div>
+              <!--SESSION END-->
             </nav>
           </div>
         </div>
       </div>
       <!-- Header End -->
 
-      <!--LOG IN-->
+      <!--MY ACCOUNT START-->
+      <div id="myaccount-container">
+        <h2>My Account</h2>
+        <form id="accountForm" class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" value="John Doe" readonly />
 
-      <div class="login-and-signup-container" id="loginForm">
-        <h2>LOG IN</h2>
-        <form onsubmit="login(); return false;">
-          <div class="form-group">
-            <label for="loginUsername">Username:</label>
-            <input
-              type="text"
-              id="loginUsername"
-              placeholder="Enter username"
-            />
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value="johndoe"
+            readonly
+          />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="john.doe@example.com"
+            readonly
+          />
+
+          <label for="streetAddress">Street Address</label>
+          <input
+            type="text"
+            id="streetAddress"
+            name="streetAddress"
+            value="123 Main St"
+            readonly
+          />
+
+          <label for="barangay">Barangay</label>
+          <input
+            type="text"
+            id="barangay"
+            name="barangay"
+            value="Downtown"
+            readonly
+          />
+
+          <label for="city">City/Municipality</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value="Metro City"
+            readonly
+          />
+
+          <label for="province">Province</label>
+          <input
+            type="text"
+            id="province"
+            name="province"
+            value="Metro Province"
+            readonly
+          />
+
+          <div class="button-group">
+            <button type="button" id="editButton">Edit</button>
+            <button type="submit" id="saveButton" style="display: none">
+              Save
+            </button>
+            <button type="button" id="cancelButton" style="display: none">
+              Cancel
+            </button>
           </div>
-          <div class="form-group">
-            <label for="loginEmail">Email:</label>
-            <input type="email" id="loginEmail" placeholder="Enter email" />
-          </div>
-          <div class="form-group">
-            <label for="loginPassword">Password:</label>
-            <input
-              type="password"
-              id="loginPassword"
-              placeholder="Enter password"
-            />
-          </div>
-          <div class="form-group">
-            <button type="submit">Login</button>
-          </div>
-          <p style="text-align: center">
-            Don't have an account?
-            <a href="#" onclick="showSignupForm(); return false;">Sign Up</a>
-          </p>
-          <p style="text-align: center">
-            <a href="#" onclick="showForgotPasswordForm(); return false;"
-              >Forgot Password?</a
-            >
-          </p>
         </form>
       </div>
-
-      <div
-        class="login-and-signup-container"
-        id="signupForm"
-        style="display: none"
-      >
-        <h2>SIGN UP</h2>
-        <form onsubmit="signup(); return false;">
-          <div class="form-group">
-            <label for="signupName">Name:</label>
-            <input type="text" id="signupName" placeholder="Enter name" />
-          </div>
-          <div class="form-group">
-            <label for="signupUsername">Username:</label>
-            <input
-              type="text"
-              id="signupUsername"
-              placeholder="Enter username"
-            />
-          </div>
-          <div class="form-group">
-            <label for="signupEmail">Email:</label>
-            <input type="email" id="signupEmail" placeholder="Enter email" />
-          </div>
-          <div class="form-group">
-            <label for="signupPassword">Password:</label>
-            <input
-              type="password"
-              id="signupPassword"
-              placeholder="Enter password"
-            />
-          </div>
-          <div class="form-group">
-            <label for="signupPin">PIN:</label>
-            <input type="password" id="signupPin" placeholder="Enter PIN" />
-          </div>
-          <div class="form-group">
-            <label for="signupAddress">Address:</label>
-            <input
-              type="text"
-              id="signupAddress"
-              placeholder="Street Address"
-            />
-            <input
-              type="text"
-              id="signupBarangay"
-              placeholder="Barangay (Neighborhood or District)"
-            />
-            <input
-              type="text"
-              id="signupCity"
-              placeholder="City or Municipality"
-            />
-            <input type="text" id="signupProvince" placeholder="Province" />
-          </div>
-          <div class="form-group">
-            <button type="submit">Signup</button>
-          </div>
-          <p style="text-align: center">
-            Already have an account?
-            <a href="#" onclick="showLoginForm(); return false;">Login</a>
-          </p>
-        </form>
-      </div>
-
-      <!--FORGOT PASSWORD-->
-      <div
-        class="login-and-signup-container"
-        id="forgotPasswordForm"
-        style="display: none"
-      >
-        <h2>FORGOT PASSWORD</h2>
-        <form onsubmit="forgotPassword(); return false;">
-          <div class="form-group">
-            <label for="forgotName">Name:</label>
-            <input type="text" id="forgotName" placeholder="Enter name" />
-          </div>
-          <div class="form-group">
-            <label for="forgotUsername">Username:</label>
-            <input
-              type="text"
-              id="forgotUsername"
-              placeholder="Enter username"
-            />
-          </div>
-          <div class="form-group">
-            <label for="forgotEmail">Email:</label>
-            <input type="email" id="forgotEmail" placeholder="Enter email" />
-          </div>
-          <div class="form-group">
-            <label for="forgotPin">PIN:</label>
-            <div style="display: flex; align-items: center">
-              <input
-                type="password"
-                id="forgotPin"
-                placeholder="Enter PIN"
-                style="margin-right: 10px"
-              />
-              <!--ETOOOO BUTTTOONN FOR PIN-->
-              <button type="button" onclick="checkPin()">Confirm PIN</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="newPassword">New Password:</label>
-            <input
-              type="password"
-              id="newPassword"
-              placeholder="Enter new password"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <label for="confirmPassword">Confirm Password:</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              placeholder="Confirm new password"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <button type="submit">Submit</button>
-          </div>
-          <p style="text-align: center">
-            Remembered your password?
-            <a href="#" onclick="showLoginForm(); return false;">Login</a>
-          </p>
-        </form>
-      </div>
-
-      <script>
-        // Function to handle login
-        function login() {
-          var email = document.getElementById("loginEmail").value;
-          var password = document.getElementById("loginPassword").value;
-          // Here you can add your login logic, such as sending the data to a server for validation
-          console.log(
-            "Login clicked with email:",
-            email,
-            "and password:",
-            password
-          );
-        }
-
-        // Function to handle signup
-        function signup() {
-          var name = document.getElementById("signupName").value;
-          var username = document.getElementById("signupUsername").value;
-          var email = document.getElementById("signupEmail").value;
-          var password = document.getElementById("signupPassword").value;
-          var pin = document.getElementById("signupPin").value;
-          var address = document.getElementById("signupAddress").value;
-          var barangay = document.getElementById("signupBarangay").value;
-          var city = document.getElementById("signupCity").value;
-          var province = document.getElementById("signupProvince").value;
-          // Here you can add your signup logic, such as sending the data to a server for registration
-          console.log(
-            "Signup clicked with name:",
-            name,
-            ", username:",
-            username,
-            ", email:",
-            email,
-            ", password:",
-            password,
-            ", pin:",
-            pin,
-            ", address:",
-            address,
-            ", barangay:",
-            barangay,
-            ", city:",
-            city,
-            ", province:",
-            province
-          );
-        }
-
-        // Function to show signup form and hide login form
-        function showSignupForm() {
-          document.getElementById("signupForm").style.display = "block";
-          document.getElementById("loginForm").style.display = "none";
-        }
-
-        // Function to show login form and hide signup form
-        function showLoginForm() {
-          document.getElementById("signupForm").style.display = "none";
-          document.getElementById("loginForm").style.display = "block";
-          document.getElementById("forgotPasswordForm").style.display = "none";
-        }
-
-        //forgot password JS
-
-        function showForgotPasswordForm() {
-          document.getElementById("signupForm").style.display = "none";
-          document.getElementById("loginForm").style.display = "none";
-          document.getElementById("forgotPasswordForm").style.display = "block";
-        }
-
-        //FUNCTION TO CHECK PIN BASED FROM USER INPUT PIN
-        function checkPin() {
-          var pin = document.getElementById("forgotPin").value;
-          var newPassword = document.getElementById("newPassword");
-          var confirmPassword = document.getElementById("confirmPassword");
-          if (pin === "123") {
-            //HERE EDERRRRR
-            newPassword.disabled = false;
-            confirmPassword.disabled = false;
-          } else {
-            newPassword.disabled = true;
-            confirmPassword.disabled = true;
-          }
-        }
-      </script>
+      <!--MY ACCOUNT END-->
 
       <!-- Footer Start -->
       <div
         class="container-fluid bg-dark text-light footer wow fadeIn"
         data-wow-delay="0.1s"
+        
       >
         <div class="container pb-5">
           <div class="row g-5">

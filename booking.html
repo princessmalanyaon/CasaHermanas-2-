@@ -118,12 +118,18 @@
                   >
                   <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a
-                  href="newlogin-signup.html"
-                  class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block"
-                  >Log In<i class="fas fa-user ms-3"></i
-                ></a>
+                <!--SESSION START-->
+                <div class="dropdown">
+                  <button class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                      Username <i class="fas fa-user ms-3"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="myaccount.html">My Account</a>
+                      <a class="dropdown-item" href="#">Log Out</a>
+                  </div>
               </div>
+              <!--SESSION END-->
+
             </nav>
           </div>
         </div>

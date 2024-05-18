@@ -140,12 +140,19 @@
                     <a href="booking.html" class="nav-item nav-link">Booking</a>
                   <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a
-                  href="newlogin-signup.html"
-                  class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block"
-                  >Log In<i class="fas fa-user ms-3"></i
-                ></a>
+                
+                <!--SESSION START-->
+                <div class="dropdown">
+                  <button class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                      Username <i class="fas fa-user ms-3"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="myaccount.html">My Account</a>
+                      <a class="dropdown-item" href="#">Log Out</a>
+                  </div>
               </div>
+              <!--SESSION END-->
+
             </nav>
           </div>
         </div>
@@ -173,8 +180,9 @@
         id="cart"
         tabindex="-1"
         role="dialog"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby="cartModal"
         aria-hidden="true"
+       
       >
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -328,7 +336,7 @@
       </div>
       
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-secondary" id="receiptOkButton">OK</button>
         </div>
       </div>
     </div>
@@ -337,6 +345,30 @@
 
 
 `<!--END OF RECEIPT MODAL-->
+
+<!--THANK YOU  MODAL START-->
+<div class="modal fade" id="thankYouModal" tabindex="-1" role="dialog" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="thankYouModalLabel">
+                  <i class="fa fa-check-circle" aria-hidden="true" style="color: green;"></i>
+                  Thank You!
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body text-center">
+              <h6>Your order has been placed successfully.</h6>
+              <i class="fa fa-smile-o" aria-hidden="true" style="font-size: 50px; color: orange;"></i>
+              <p>We appreciate your business!</p>
+          </div>
+          
+      </div>
+  </div>
+</div>
+<!--THANK YOU MODAL END-->
 
 
       <!--START OF PRODUCTS-->
@@ -368,6 +400,7 @@
             <!-- Add more tabs as needed -->
           </ul>
       
+
 
           
           <!--GRAZING TABLE-->
@@ -2727,6 +2760,7 @@
       <!--CART fucntion-->
 
       <a
+        id="cartIcon"
         href="#"
         style="margin-bottom: 70px"
         class="btn btn-lg btn-primary btn-lg-square cart-btn"
@@ -2765,6 +2799,11 @@
 <!-- Include Bootstrap CSS and JS files -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+<!--BS for thankyou modal-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
