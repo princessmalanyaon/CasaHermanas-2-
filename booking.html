@@ -1,3 +1,24 @@
+<!--<?php
+session_start();
+
+// Check if the link is clicked and session destruction flag is set
+if(isset($_GET['destroy_session'])) {
+  // Unset specific session variables if needed
+  if(isset($_SESSION['foo'])) {
+      unset($_SESSION['foo']);
+      // Optionally, perform other actions or unset other session variables
+  }
+  
+  // Destroy the session
+  session_destroy();
+  
+  // Redirect the user to Form.php using JavaScript
+  echo '<script>window.location.href = "newlogin-signup.php";</script>';
+  exit; // Ensure script execution stops here
+}
+?>
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,7 +65,7 @@
   </head>
 
   <body>
-    <div class="container-xxl bg-white p-0">
+  <div class="container-xxl bg-white p-0">
       <!-- Spinner Start -->
       <div
         id="spinner"
@@ -65,7 +86,7 @@
         <div class="row gx-0">
           <div class="col-lg-3 bg-dark d-none d-lg-block">
             <a
-              href="index.html"
+              href="http://127.0.0.1/CasaHermanasBackend/index.php"
               class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center"
             >
               <h2 class="m-0 text-primary text-uppercase">CASA HERMANAS</h2>
@@ -94,7 +115,7 @@
               </div>
             </div>
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
-              <a href="index.html" class="navbar-brand d-block d-lg-none">
+              <a href="http://127.0.0.1/CasaHermanasBackend/index.php" class="navbar-brand d-block d-lg-none">
                 <h1 class="m-0 text-primary text-uppercase">Casa Hermanas</h1>
               </a>
               <button
@@ -110,19 +131,28 @@
                 id="navbarCollapse"
               >
                 <div class="navbar-nav mr-auto py-0">
-                  <a href="index.html" class="nav-item nav-link">Home</a>
-                  <a href="about.html" class="nav-item nav-link">About</a>
-                  <a href="services.html" class="nav-item nav-link">Services</a>
-                  <a href="booking.html" class="nav-item nav-link active"
+                  <a href="http://127.0.0.1/CasaHermanasBackend/index.php" class="nav-item nav-link">Home</a>
+                  <a href="http://127.0.0.1/CasaHermanasBackend/about.php" class="nav-item nav-link">About</a>
+                  <a href="http://127.0.0.1/CasaHermanasBackend/services.php" class="nav-item nav-link">Services</a>
+                  <a href="http://127.0.0.1/CasaHermanasBackend/booking.php" class="nav-item nav-link active"
                     >Booking</a
                   >
-                  <a href="contact.html" class="nav-item nav-link">Contact</a>
+                  <a href="http://127.0.0.1/CasaHermanasBackend/contact.php" class="nav-item nav-link">Contact</a>
                 </div>
-                <a
-                  href="newlogin-signup.html"
-                  class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block"
-                  >Log In<i class="fas fa-user ms-3"></i
-                ></a>
+                <div class="dropdown">
+                         <button class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                         <?php
+                        if(isset($_SESSION['userName'])) {
+                        echo " " . $_SESSION['userName'];
+                        }
+                         ?>
+                    <i class="fas fa-user ms-3"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">My Account</a>    
+                    <a class="dropdown-item" href="?destroy_session=1">Log Out</a>
+                   </div>
+                  </div>
               </div>
             </nav>
           </div>
@@ -200,112 +230,78 @@
             </div>
             <div class="col-lg-6">
               <div class="wow fadeInUp" data-wow-delay="0.2s">
-                <form>
-                  <div class="row g-3">
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="name"
-                          placeholder="Your Name"
-                        />
+            
+              <!--Form-->
+              <form method="post" action="bookingcode.php">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required />
                         <label for="name">Your Name</label>
-                      </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <input
-                          type="email"
-                          class="form-control"
-                          id="email"
-                          placeholder="Your Email"
-                        />
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required />
                         <label for="email">Your Email</label>
-                      </div>
                     </div>
-                    <div class="col-md-6">
-                      <div
-                        class="form-floating date"
-                        id="date3"
-                        data-target-input="nearest"
-                      >
-                        <input
-                          type="text"
-                          class="form-control datetimepicker-input"
-                          id="checkin"
-                          placeholder="Check In"
-                          data-target="#date3"
-                          data-toggle="datetimepicker"
-                        />
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" id="checkin" name="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" required />
                         <label for="checkin">Check In</label>
-                      </div>
                     </div>
-                    <div class="col-md-6">
-                      <div
-                        class="form-floating date"
-                        id="date4"
-                        data-target-input="nearest"
-                      >
-                        <input
-                          type="text"
-                          class="form-control datetimepicker-input"
-                          id="checkout"
-                          placeholder="Check Out"
-                          data-target="#date4"
-                          data-toggle="datetimepicker"
-                        />
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating date" id="date4" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" id="checkout" name="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" required />
                         <label for="checkout">Check Out</label>
-                      </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <select class="form-select" id="select1">
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <select class="form-select" id="select1" name="adults">
                           <option value="1">Adult 1</option>
                           <option value="2">Adult 2</option>
                           <option value="3">Adult 3</option>
                         </select>
                         <label for="select1">Select Adult</label>
-                      </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <select class="form-select" id="select2">
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <select class="form-select" id="select2" name="children">
+                          <option value="0">Child 0</option>
                           <option value="1">Child 1</option>
                           <option value="2">Child 2</option>
                           <option value="3">Child 3</option>
                         </select>
                         <label for="select2">Select Child</label>
-                      </div>
                     </div>
-                    <div class="col-12">
-                      <div class="form-floating">
-                        <select class="form-select" id="select3">
+                </div>
+                <div class="col-12">
+                    <div class="form-floating">
+                        <select class="form-select" id="select3" name="room">
                           <option value="1">Room 1</option>
                           <option value="2">Room 2</option>
                           <option value="3">Room 3</option>
                         </select>
                         <label for="select3">Select A Room</label>
-                      </div>
                     </div>
-                    <div class="col-12">
-                      <div class="form-floating">
-                        <textarea
-                          class="form-control"
-                          placeholder="Special Request"
-                          id="message"
-                          style="height: 100px"
-                        ></textarea>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Special Request" id="message" name="message" style="height: 100px"></textarea>
                         <label for="message">Special Request</label>
-                      </div>
                     </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100 py-3" type="submit">
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">
                         Book Now
-                      </button>
-                    </div>
-                  </div>
-                </form>
+                    </button>
+                </div>
+            </div>
+        </form>
               </div>
             </div>
           </div>
@@ -328,7 +324,7 @@
           <div class="row g-5">
             <div class="col-md-6 col-lg-4">
               <div class="bg-primary rounded p-4">
-                <a href="index.html"
+                <a href="http://127.0.0.1/CasaHermanasBackend/index.php"
                   ><h1 class="text-white text-uppercase mb-3">
                     Casa Hermanas
                   </h1></a
@@ -388,11 +384,11 @@
                   >
                     Quick Links
                   </h6>
-                  <a class="btn btn-link" href="index.html">Home</a>
-                  <a class="btn btn-link" href="about.html">About</a>
+                  <a class="btn btn-link" href="http://127.0.0.1/CasaHermanasBackend/index.php">Home</a>
+                  <a class="btn btn-link" href="http://127.0.0.1/CasaHermanasBackend/about.php">About</a>
                   <a class="btn btn-link" href="events.html">Services</a>
-                  <a class="btn btn-link" href="booking.html">Reservation</a>
-                  <a class="btn btn-link" href="contact.html">Contact</a>
+                  <a class="btn btn-link" href="http://127.0.0.1/CasaHermanasBackend/booking.php">Reservation</a>
+                  <a class="btn btn-link" href="http://127.0.0.1/CasaHermanasBackend/contact.php">Contact</a>
                 </div>
                 <div class="col-md-6">
                   <h6

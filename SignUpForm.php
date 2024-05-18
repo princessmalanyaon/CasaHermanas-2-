@@ -1,13 +1,16 @@
 <?php
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-$UserFullName = $_POST["UserFullName"];
-$UserEmail = $_POST["UserEmail"];
-$UserPassword = $_POST["UserPassword"];
-
+$Name = $_POST["Name"];
+$Email = $_POST["Email"];
+$Password = $_POST["Password"];
+$Address = $_POST["Address"];
+$Barangay = $_POST["Barangay"];
+$City = $_POST["City"];
+$Province = $_POST["Province"];
 
     // Check if any of the form fields are empty
-    if(empty($UserFullName) || empty($UserEmail) || empty($UserPassword)) {
+    if(empty($Name) || empty($Email) || empty($Password) || empty($Address) || empty($Barangay) || empty($City) || empty($Province)) {
         echo '<script>alert("Fill all fields");</script>';
         echo '<script>window.history.back();</script>';
         exit(); // Stop further execution of the code
@@ -16,8 +19,8 @@ $UserPassword = $_POST["UserPassword"];
 try{
     //Links to Connection.php
     require_once "Connection1.php";
-    $query = "INSERT INTO user_account(UserFullName, UserEmail, UserPassword) values
-    (:UserFullName, :UserEmail, :UserPassword);";
+    $query = "INSERT INTO user_account(Name, Email, Password, Address, Barangay, City, Province) values
+    (:Name, :Email, :Password, :Address, :Barangay, :City, :Province);";
 
     $stmt = $conn->prepare($query);
 
@@ -25,17 +28,18 @@ try{
         'cost' => 12
     ];
 
-    $hashPassword = password_hash($UserPassword, PASSWORD_BCRYPT, $option);
-
-    $stmt->bindParam(":UserFullName", $UserFullName);
-    $stmt->bindParam(":UserEmail", $UserEmail);
-    $stmt->bindParam(":UserPassword", $UserPassword);
-
+    $stmt->bindParam(":Name", $Name);
+    $stmt->bindParam(":Email", $Email);
+    $stmt->bindParam(":Password", $Password);
+    $stmt->bindParam(":Address", $Address);
+    $stmt->bindParam(":Barangay", $Barangay);
+    $stmt->bindParam(":City", $City);
+    $stmt->bindParam(":Province", $Province);
     $stmt->execute();
 
     $conn = null;
     $stmt = null;
-    header("Location: http://127.0.0.1/CasaHermanasPrincess/index.html");
+    header("Location: http://127.0.0.1/CasaHermanasBackend/newlogin-signup.php");
     die();
 }
 
@@ -44,5 +48,5 @@ catch(PDOException $e){
 }
 
 }else{
-    header("Location: .../login-signup.php");
+    header("Location: .../newlogin-signup.php");
 }

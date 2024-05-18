@@ -1,36 +1,44 @@
 <?php
+session_start(); // STARTS THE SESSION TO ALLOW USE OF SESSION VARIABLES
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if email and password are provided
-    if(empty($_POST["email"]) || empty($_POST["password"])) {
-        // If either email or password is empty, redirect to Incorrect.html
+    // Check if email, password, and name are provided
+    if (empty($_POST["Name"]) || empty($_POST["Email"]) || empty($_POST["Password"])) {
+        // If any field is empty, alert the user and go back
         echo '<script> alert("Cannot have an Empty Fields");</script>';
         echo '<script>window.history.back();</script>';
         exit();
     }
 
-    $UserEmail = trim($_POST["email"]); // Trim leading and trailing spaces
-    $UserPassword = $_POST["password"];
+    $Name = $_POST["Name"];
+    $Email = trim($_POST["Email"]); // Trim leading and trailing spaces from email
+    $Password = $_POST["Password"];
 
     try {
         // Connect to the database
         require_once "Connection1.php";
 
-        // Prepare SQL query to fetch user details based on email and password
-        $query = "SELECT UserEmail, UserPassword FROM user_account WHERE UserEmail = :UserEmail AND UserPassword = :UserPassword";
+        // Prepare SQL query to fetch user details based on email, password, and name
+        $query = "SELECT Name, Email, Password FROM user_account WHERE Email = :Email AND Password = :Password AND Name = :Name";
         $stmt = $conn->prepare($query);
-        $stmt->bindParam(":UserEmail", $UserEmail);
-        $stmt->bindParam(":UserPassword", $UserPassword);
+        $stmt->bindParam(":Name", $Name);
+        $stmt->bindParam(":Email", $Email);
+        $stmt->bindParam(":Password", $Password);
         $stmt->execute();
 
-        // Fetch user's email and password from the database
+        // Fetch user's details from the database
         $storedData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($storedData && $storedData['UserEmail'] === $UserEmail && $storedData['UserPassword'] === $UserPassword) {
-            // Email and password match, redirect to index.html
-            header("Location: index.html");
+        if ($storedData && $storedData['Name'] === $Name && $storedData['Email'] === $Email && $storedData['Password'] === $Password) {
+            // EMAIL, PASSWORD, AND NAME MATCH, SET THE SESSION VARIABLE
+            $_SESSION['userName'] = $Name; // STORE USER'S NAME IN THE SESSION
+
+            // Redirect to the main page
+            header("Location: http://127.0.0.1/CasaHermanasBackend/index.php");
             exit();
         } else {
-            echo '<script> alert("Incorrect Input or Input does not Exist");</script>'; // Error handling for input not existing
+            // Incorrect input, alert the user and go back
+            echo '<script> alert("Incorrect Input or Input does not Exist");</script>';
             echo '<script>window.history.back();</script>';
             exit();
         }
@@ -43,4 +51,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: login-signup.php");
     exit();
 }
-?>
+

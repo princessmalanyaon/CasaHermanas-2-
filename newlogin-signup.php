@@ -1,0 +1,518 @@
+<form?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CASA HERMANAS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link
+      href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+
+    <style>
+      .login-and-signup-container {
+        width: 700px; /* Adjusted width */
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 150px auto; /* Adjusted margin */
+        margin-top: 35px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px; /* Added margin for h2 */
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+        width: 100%; /* Set width to match container */
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input {
+        width: calc(100% - 20px); /* Adjusted width to account for padding */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .form-group button {
+        width: calc(100% - 20px); /* Adjusted width to account for padding */
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #fea116;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .form-group button:hover {
+        background-color: #fea116;
+      }
+
+      /* Hide signup form by default */
+      #signupForm {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+  <?php
+    // Display the user's name from the session
+    if (isset($_SESSION['userName'])) {
+        echo "Welcome, " . htmlspecialchars($_SESSION['userName']) . "!";
+    }
+    ?>
+
+    <div class="container-xxl bg-white p-0">
+      <!-- Spinner Start -->
+      <div
+        id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+      >
+        <div
+          class="spinner-border text-primary"
+          style="width: 3rem; height: 3rem"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <!-- Spinner End -->
+
+      <!-- Header Start -->
+      <div class="container-fluid bg-dark px-0">
+        <div class="row gx-0">
+          <div class="col-lg-3 bg-dark d-none d-lg-block">
+            <a
+              href="http://127.0.0.1/CasaHermanasBackend/index.php.html"
+              class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center"
+            >
+              <h2 class="m-0 text-primary text-uppercase">CASA HERMANAS</h2>
+            </a>
+          </div>
+          <div class="col-lg-9">
+            <div class="row gx-0 bg-white d-none d-lg-flex">
+              <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                  <i class="fa fa-envelope text-primary me-2"></i>
+                  <p class="mb-0">aimeescasahermanas@gmail.com</p>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-2">
+                  <i class="fa fa-phone-alt text-primary me-2"></i>
+                  <p class="mb-0">0946 453 0241</p>
+                </div>
+              </div>
+              <div class="col-lg-5 px-5 text-end">
+                <div class="d-inline-flex align-items-center py-2">
+                  <a class="me-3" href=""><i class="fab fa-facebook-f"></i></a>
+                  <a class="me-3" href=""><i class="fab fa-twitter"></i></a>
+                  <a class="me-3" href=""><i class="fab fa-linkedin-in"></i></a>
+                  <a class="me-3" href=""><i class="fab fa-instagram"></i></a>
+                  <a class="" href=""><i class="fab fa-youtube"></i></a>
+                </div>
+              </div>
+            </div>
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+              <a href="http://127.0.0.1/CasaHermanasBackend/index.php" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 text-primary text-uppercase">Casa Hermanas</h1>
+              </a>
+              <button
+                type="button"
+                class="navbar-toggler"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse justify-content-between"
+                id="navbarCollapse"
+              >
+                <div class="navbar-nav mr-auto py-0">
+                  <a href="http://127.0.0.1/CasaHermanasBackend/index.php" class="nav-item nav-link">Home</a>
+                  <a href="http://127.0.0.1/CasaHermanasBackend/about.phpl" class="nav-item nav-link">About</a>
+                  <a href="http://127.0.0.1/CasaHermanasBackend/services.php" class="nav-item nav-link">Services</a>
+                  <a href="http://127.0.0.1/CasaHermanasBackend/booking.php" class="nav-item nav-link">Booking</a>
+                  <a href="http://127.0.0.1/CasaHermanasBackend/contact.php" class="nav-item nav-link">Contact</a>
+                </div>
+                <a></a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <!-- Header End -->
+
+      <!--LOG IN-->
+      <!--LOG IN-->
+      <!-- Login Form -->
+<!-- Login Form -->
+<form method="post" action="LogInForm.php" class="login-and-signup-container" id="loginForm">
+  <h2>LOG IN</h2>
+  <div class="form-group">
+    <label for="loginUsername">Name:</label>
+    <input type="text" id="loginUsername" name="Name" placeholder="Enter name" required />
+  </div>
+  <div class="form-group">
+    <label for="loginEmail">Email:</label>
+    <input type="email" id="loginEmail" name="Email" placeholder="Enter email" required />
+  </div>
+  <div class="form-group">
+    <label for="loginPassword">Password:</label>
+    <input type="password" id="loginPassword" name="Password" placeholder="Enter password" required />
+  </div>
+  <div class="form-group">
+    <button type="submit">Login</button>
+  </div>
+  <p style="text-align: center">
+    Don't have an account?
+    <a href="#" onclick="showSignupForm()">Sign Up</a>
+  </p>
+  <p style="text-align: center">
+  <a href="#" onclick="showForgotPasswordForm(); return false;"
+    >Forgot Password?</a>
+  </p>
+</form>
+
+
+
+<!-- Signup Form -->
+<form method="post" action="SignUpForm.php" class="login-and-signup-container" id="signupForm" style="display: none">
+  <h2>SIGN UP</h2>
+  <div class="form-group">
+    <label for="signupName">Name:</label>
+    <input type="text" id="signupName" name="Name" placeholder="Enter name" />
+  </div>
+  <div class="form-group">
+    <label for="signupEmail">Email:</label>
+    <input type="email" id="signupEmail" name="Email" placeholder="Enter email" />
+  </div>
+  <div class="form-group">
+    <label for="signupPassword">Password:</label>
+    <input type="password" id="signupPassword" name="Password" placeholder="Enter password" />
+  </div>
+  <div class="form-group">
+    <label for="signupAddress">Address:</label>
+    <input type="text" id="signupAddress" name="Address" placeholder="Street Address" />
+    <input type="text" id="signupBarangay" name="Barangay" placeholder="Barangay (Neighborhood or District)" />
+    <input type="text" id="signupCity" name="City" placeholder="City or Municipality" />
+    <input type="text" id="signupProvince" name="Province" placeholder="Province" />
+  </div>
+  <div class="form-group">
+    <button type="submit">Signup</button>
+  </div>
+  <p style="text-align: center">
+    Already have an account?
+    <a href="#" onclick="showLoginForm()">Login</a>
+  </p>
+</form>
+
+<!--ForgotPass Form-->
+ <div
+        class="login-and-signup-container"
+        id="forgotPasswordForm"
+        style="display: none"
+      >
+        <h2>FORGOT PASSWORD</h2>
+        <form onsubmit="forgotPassword(); return false;">
+          <div class="form-group">
+            <label for="forgotName">Name:</label>
+            <input type="text" id="forgotName" placeholder="Enter name" />
+          </div>
+          <div class="form-group">
+            <label for="forgotUsername">Username:</label>
+            <input
+              type="text"
+              id="forgotUsername"
+              placeholder="Enter username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="forgotEmail">Email:</label>
+            <input type="email" id="forgotEmail" placeholder="Enter email" />
+          </div>
+          <div class="form-group">
+            <label for="forgotPin">PIN:</label>
+            <div style="display: flex; align-items: center">
+              <input
+                type="password"
+                id="forgotPin"
+                placeholder="Enter PIN"
+                style="margin-right: 10px"
+              />
+              <!--ETOOOO BUTTTOONN FOR PIN-->
+              <button type="button" onclick="checkPin()">Confirm PIN</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="newPassword">New Password:</label>
+            <input
+              type="password"
+              id="newPassword"
+              placeholder="Enter new password"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirm new password"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <button type="submit">Submit</button>
+          </div>
+          <p style="text-align: center">
+            Remembered your password?
+            <a href="#" onclick="showLoginForm(); return false;">Login</a>
+          </p>
+        </form>
+      </div>
+
+      <script>
+        // Function to handle login
+        function login() {
+          var email = document.getElementById("loginEmail").value;
+          var password = document.getElementById("loginPassword").value;
+          // Here you can add your login logic, such as sending the data to a server for validation
+          console.log(
+            "Login clicked with email:",
+            email,
+            "and password:",
+            password
+          );
+        }
+
+        // Function to handle signup
+        function signup() {
+          var name = document.getElementById("signupName").value;
+          var email = document.getElementById("signupEmail").value;
+          var password = document.getElementById("signupPassword").value;
+          // Here you can add your signup logic, such as sending the data to a server for registration
+          console.log(
+            "Signup clicked with name:",
+            name,
+            ", email:",
+            email,
+            "and password:",
+            password
+          );
+        }
+
+        // Function to show signup form and hide login form
+        function showSignupForm() {
+          document.getElementById("signupForm").style.display = "block";
+          document.getElementById("loginForm").style.display = "none";
+        }
+
+        // Function to show login form and hide signup form
+        function showLoginForm() {
+          document.getElementById("signupForm").style.display = "none";
+          document.getElementById("loginForm").style.display = "block";
+        }
+
+      //forgot password JS
+
+        function showForgotPasswordForm() {
+          document.getElementById("signupForm").style.display = "none";
+          document.getElementById("loginForm").style.display = "none";
+          document.getElementById("forgotPasswordForm").style.display = "block";
+        }
+
+      //FUNCTION TO CHECK PIN BASED FROM USER INPUT PIN
+      function checkPin() {
+                var pin = document.getElementById("forgotPin").value;
+                var newPassword = document.getElementById("newPassword");
+                var confirmPassword = document.getElementById("confirmPassword");
+                if (pin === "123") {
+                  //HERE EDERRRRR
+                  newPassword.disabled = false;
+                  confirmPassword.disabled = false;
+                } else {
+                  newPassword.disabled = true;
+                  confirmPassword.disabled = true;
+                }
+              }
+
+
+
+
+      </script>
+
+
+
+
+
+      <!-- Footer Start -->
+      <div
+        class="container-fluid bg-dark text-light footer wow fadeIn"
+        data-wow-delay="0.1s"
+      >
+        <div class="container pb-5">
+          <div class="row g-5">
+            <div class="col-md-6 col-lg-4">
+              <div class="bg-primary rounded p-4">
+                <a href="http://127.0.0.1/CasaHermanasBackend/index.php"
+                  ><h1 class="text-white text-uppercase mb-3">
+                    Casa Hermanas
+                  </h1></a
+                >
+                <p class="text-white mb-0" style="text-align: justify">
+                  Where classic elegance meets modern comfort in an ancestral
+                  setting. Immerse yourself in heritage-inspired cuisine and
+                  charming ambiance, where tradition and allure converge
+                  seamlessly.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <h6
+                class="section-title text-start text-primary text-uppercase mb-4"
+              >
+                Contact
+              </h6>
+              <p class="mb-2">
+                <i class="fa fa-map-marker-alt me-3"></i>#18 Vinzon St. Barangay
+                7 - Bano, Old Albay, Legazpi, Philippines
+              </p>
+              <p class="mb-2">
+                <i class="fa fa-phone-alt me-3"></i>0946 453 0241
+              </p>
+              <p class="mb-2">
+                <i class="fa fa-envelope me-3"></i>casahermanas@gmail.com
+              </p>
+              <div class="d-flex pt-2">
+                <a class="btn btn-outline-light btn-social" href=""
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a class="btn btn-outline-light btn-social" href=""
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a class="btn btn-outline-light btn-social" href=""
+                  ><i class="fab fa-youtube"></i
+                ></a>
+                <a class="btn btn-outline-light btn-social" href=""
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-12">
+              <div class="row gy-5 g-4">
+                <div class="col-md-6">
+                  <h6
+                    class="section-title text-start text-primary text-uppercase mb-4"
+                  >
+                    Quick Links
+                  </h6>
+                  <a class="btn btn-link" href="http://127.0.0.1/CasaHermanasBackend/about.php">About</a>
+                  <a class="btn btn-link" href="service.html">Services</a>
+                  <a class="btn btn-link" href="http://127.0.0.1/CasaHermanasBackend/booking.php">Booking</a>
+                  <a class="btn btn-link" href="team.html">Team</a>
+                  <a class="btn btn-link" href="http://127.0.0.1/CasaHermanasBackend/contact.php">Contact</a>
+                </div>
+                <div class="col-md-6">
+                  <h6
+                    class="section-title text-start text-primary text-uppercase mb-4"
+                  >
+                    Services
+                  </h6>
+                  <a class="btn btn-link" href="">Rooms</a>
+                  <a class="btn btn-link" href="">Grazing Table</a>
+                  <a class="btn btn-link" href="">Mobile Bar</a>
+                  <a class="btn btn-link" href="">Mobile Cafe</a>
+                  <a class="btn btn-link" href="">Events & Catering Services</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="copyright">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                All rights reserved | Casa Hermanas
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer End -->
+
+      <!-- Back to Top -->
+      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+        ><i class="bi bi-arrow-up"></i
+      ></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
