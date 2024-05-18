@@ -247,15 +247,15 @@
                 <div class="mb-3">
                   <h6>Select Payment Method</h6>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethod1" value="creditCard" checked>
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethod1" value="Cash on Delivery" checked>
                     <label class="form-check-label" for="paymentMethod1">
                       Cash on Delivery
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethod2" value="paypal">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="paymentMethod2" value="Pay on the Counter">
                     <label class="form-check-label" for="paymentMethod2">
-                      Credit Card
+                     Pay on the Counter
                     </label>
                   </div>
                 </div>
@@ -264,10 +264,11 @@
                 <div class="mb-3">
                   <h6>Select Delivery Option</h6>
                   <select class="form-select" id="deliveryOption" name="deliveryOption">
-                    <option value="standard">Standard Delivery</option>
-                    <option value="express">Express Delivery</option>
+                    <option value="Standard">Standard Delivery</option>
+                    <option value="Express">Express Delivery</option>
                   </select>
                 </div>
+                <p>Note: Please present an e-copy of your receipt upon delivery or at the counter.</p>
       
                 <!-- Submit Button -->
                 <button type="submit" class="btn btn-primary">Place Order</button>
@@ -278,7 +279,7 @@
       </form>
       <!--END OF CHECKOUT PAYMENT-->
 
-      <!--START OF RECEIPT MODAL-->
+<!--START OF RECEIPT MODAL-->
 <form id="receiptForm">
   <div class="modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="receiptModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -292,27 +293,40 @@
         <div class="modal-body">
           <h6>Order Receipt</h6>
           <table class="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody id="receiptCartItems">
-              <!-- Receipt items will be populated here -->
-            </tbody>
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                  </tr>
+              </thead>
+              <tbody id="receiptCartItems">
+                  <!-- Receipt items will be populated here -->
+              </tbody>
           </table>
-          <div>Total Amount: PHP <span id="receiptTotalAmount"></span></div>
-          <div>Payment Method: <span id="receiptPaymentMethod"></span></div>
-          <div>Delivery Option: <span id="receiptDeliveryOption"></span></div>
-          
+          <!-- New table for displaying receipt details -->
+          <table class="table">
+              <tr>
+                  <td>Total Amount:</td>
+                  <td>PHP <span id="receiptTotalAmountDetail"></span></td>
+              </tr>
+              <tr>
+                  <td>Payment Method:</td>
+                  <td><input type="text" id="receiptPaymentMethodDetail" name="receiptPaymentMethodDetail" readonly></td>
+              </tr>
+              <tr>
+                  <td>Delivery Option:</td>
+                  <td><input type="text" id="receiptDeliveryOptionDetail" name="receiptDeliveryOptionDetail" readonly></td>
+              </tr>
+          </table>
+      
           <!-- Hidden inputs to store receipt details -->
           <input type="hidden" name="receiptTotalAmountInput" id="receiptTotalAmountInput">
           <input type="hidden" name="receiptPaymentMethodInput" id="receiptPaymentMethodInput">
           <input type="hidden" name="receiptDeliveryOptionInput" id="receiptDeliveryOptionInput">
-        </div>
+      </div>
+      
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
         </div>
@@ -320,7 +334,9 @@
     </div>
   </div>
 </form>
-<!--END OF RECEIPT MODAL-->
+
+
+`<!--END OF RECEIPT MODAL-->
 
 
       <!--START OF PRODUCTS-->
