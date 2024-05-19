@@ -494,12 +494,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// JavaScript for Modal
+// JavaScript for Modal view detail
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImage");
   const captionText = document.getElementById("caption");
-  const closeModal = document.getElementsByClassName("close")[0];
+  const closeModal = document.getElementsByClassName("closed")[0];
 
   document.querySelectorAll(".view-detail").forEach(function (element) {
     element.addEventListener("click", function () {
@@ -516,6 +516,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("click", function (event) {
     if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
       modal.style.display = "none";
     }
   });
