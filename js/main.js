@@ -198,19 +198,6 @@ var shoppingCart = (function () {
     return totalCount;
   };
 
-  // Function to enable or disable the Order now button based on cart items
-  function updateOrderNowButton() {
-    var orderNowBtn = document.getElementById("orderNowBtn");
-    if (obj.totalCount() === 0) {
-      orderNowBtn.disabled = true;
-    } else {
-      orderNowBtn.disabled = false;
-    }
-  }
-
-  // Call updateOrderNowButton when needed to update the button state
-  updateOrderNowButton();
-
   // Total cart
   obj.totalCart = function () {
     var totalCart = 0;
@@ -507,28 +494,27 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 // JavaScript for Modal
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImage");
   const captionText = document.getElementById("caption");
   const closeModal = document.getElementsByClassName("close")[0];
 
-  document.querySelectorAll('.view-detail').forEach(function(element) {
-    element.addEventListener('click', function() {
-      const img = this.closest('.room-item').querySelector('.product-image');
+  document.querySelectorAll(".view-detail").forEach(function (element) {
+    element.addEventListener("click", function () {
+      const img = this.closest(".room-item").querySelector(".product-image");
       modal.style.display = "block";
       modalImg.src = img.src;
       captionText.innerHTML = img.alt;
     });
   });
 
-  closeModal.addEventListener('click', function() {
+  closeModal.addEventListener("click", function () {
     modal.style.display = "none";
   });
 
-  window.addEventListener('click', function(event) {
+  window.addEventListener("click", function (event) {
     if (event.target === modal) {
       modal.style.display = "none";
     }
