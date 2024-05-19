@@ -198,6 +198,19 @@ var shoppingCart = (function () {
     return totalCount;
   };
 
+  // Function to enable or disable the Order now button based on cart items
+  function updateOrderNowButton() {
+    var orderNowBtn = document.getElementById("orderNowBtn");
+    if (obj.totalCount() === 0) {
+      orderNowBtn.disabled = true;
+    } else {
+      orderNowBtn.disabled = false;
+    }
+  }
+
+  // Call updateOrderNowButton when needed to update the button state
+  updateOrderNowButton();
+
   // Total cart
   obj.totalCart = function () {
     var totalCart = 0;
